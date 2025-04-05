@@ -1,5 +1,5 @@
 // Product data
-const products = [
+export const products = [
     {
         id: 1,
         name: "Classic Round",

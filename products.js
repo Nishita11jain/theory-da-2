@@ -1,8 +1,8 @@
 // Import products data (assuming it's in a separate file)
-import { products } from 'data.js';
+import { products } from './data.js';
 
 // Import addToCart function (assuming it's in a separate file)
-import { addToCart } from './utils.js';
+import { addToCart } from './cart.js';
 
 // DOM Elements
 const productsGrid = document.getElementById('products-grid');
@@ -253,4 +253,4 @@ function createProductElement(product) {
     });
     
     return productElement;
-}p
+}
