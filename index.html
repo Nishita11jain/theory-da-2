@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisionCraft - Premium Eyewear</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>VisionCraft</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="products.html">Shop</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <a href="#" id="search-icon"><i class="fas fa-search"></i></a>
+                <a href="cart.html" id="cart-icon"><i class="fas fa-shopping-cart"></i><span id="cart-count">0</span></a>
+            </div>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+        <div class="search-container">
+            <div class="container">
+                <input type="text" id="search-input" placeholder="Search for products...">
+                <button id="close-search"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>See the World Clearly</h1>
+                <p>Discover our premium collection of eyewear designed for style and comfort</p>
+                <a href="products.html" class="btn">Shop Now</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-categories">
+        <div class="container">
+            <h2 class="section-title">Browse Categories</h2>
+            <div class="categories">
+                <div class="category">
+                    <img src="pres.png" alt="Prescription Glasses">
+                    <h3>Prescription</h3>
+                    <a href="products.html?category=prescription" class="btn-small">View All</a>
+                </div>
+                <div class="category">
+                    <img src="sun.png" alt="Sunglasses">
+                    <h3>Sunglasses</h3>
+                    <a href="products.html?category=sunglasses" class="btn-small">View All</a>
+                </div>
+                <div class="category">
+                    <img src="read.png" alt="Reading Glasses">
+                    <h3>Reading</h3>
+                    <a href="products.html?category=reading" class="btn-small">View All</a>
+                </div>
+                <div class="category">
+                    <img src="comp.png" alt="Computer Glasses">
+                    <h3>Computer</h3>
+                    <a href="products.html?category=computer" class="btn-small">View All</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-products">
+        <div class="container">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="products" id="featured-products">
+                <!-- Products will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits">
+        <div class="container">
+            <div class="benefit">
+                <i class="fas fa-truck"></i>
+                <h3>Free Shipping</h3>
+                <p>On all orders over 1200</p>
+            </div>
+            <div class="benefit">
+                <i class="fas fa-undo"></i>
+                <h3>Easy Returns</h3>
+                <p>30-day return policy</p>
+            </div>
+            <div class="benefit">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Secure Payments</h3>
+                <p>100% secure checkout</p>
+            </div>
+            <div class="benefit">
+                <i class="fas fa-headset"></i>
+                <h3>24/7 Support</h3>
+                <p>Customer service available</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">About VisionCraft</h2>
+                <p>VisionCraft is dedicated to providing high-quality eyewear that combines style, comfort, and functionality. Our mission is to help you see the world clearly while expressing your unique style.</p>
+                <p>Founded in 2025, we've been serving customers with premium eyewear solutions for over a decade. Each pair of glasses is crafted with precision and care, ensuring durability and comfort for everyday wear.</p>
+            </div>
+            <div class="about-image">
+                <img src="spec1.jpeg" alt="About VisionCraft">
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Vellore Institute Of Technology, Vellore</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <p>+91 9461452743</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>info@visioncraft.com</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <p>Mon-Fri: 9am-6pm, Sat-Sun: 10am-4pm</p>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>VisionCraft</h3>
+                    <p>Premium eyewear for every style and need. See the world clearly with VisionCraft.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Shop</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="products.html?category=prescription">Prescription Glasses</a></li>
+                        <li><a href="products.html?category=sunglasses">Sunglasses</a></li>
+                        <li><a href="products.html?category=reading">Reading Glasses</a></li>
+                        <li><a href="products.html?category=computer">Computer Glasses</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for updates and promotions.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn-small">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 VisionCraft. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

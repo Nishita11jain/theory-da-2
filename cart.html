@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - VisionCraft</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>VisionCraft</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Shop</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <a href="#" id="search-icon"><i class="fas fa-search"></i></a>
+                <a href="cart.html" id="cart-icon" class="active"><i class="fas fa-shopping-cart"></i><span id="cart-count">0</span></a>
+            </div>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+        <div class="search-container">
+            <div class="container">
+                <input type="text" id="search-input" placeholder="Search for products...">
+                <button id="close-search"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Shopping Cart</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / <span>Cart</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="cart-section">
+        <div class="container">
+            <div class="cart-container" id="cart-container">
+                <div class="cart-empty" id="cart-empty">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h2>Your cart is empty</h2>
+                    <p>Looks like you haven't added any products to your cart yet.</p>
+                    <a href="products.html" class="btn">Continue Shopping</a>
+                </div>
+                <div class="cart-items" id="cart-items">
+                    <!-- Cart items will be loaded dynamically -->
+                </div>
+                <div class="cart-summary" id="cart-summary">
+                    <h3>Order Summary</h3>
+                    <div class="summary-item">
+                        <span>Subtotal</span>
+                        <span id="cart-subtotal">$0.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Shipping</span>
+                        <span id="cart-shipping">$0.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Tax</span>
+                        <span id="cart-tax">$0.00</span>
+                    </div>
+                    <div class="summary-item total">
+                        <span>Total</span>
+                        <span id="cart-total">$0.00</span>
+                    </div>
+                    <button class="btn checkout-btn" id="checkout-btn">Proceed to Checkout</button>
+                    <button class="btn-outline continue-btn">Continue Shopping</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>VisionCraft</h3>
+                    <p>Premium eyewear for every style and need. See the world clearly with VisionCraft.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Shop</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="products.html?category=prescription">Prescription Glasses</a></li>
+                        <li><a href="products.html?category=sunglasses">Sunglasses</a></li>
+                        <li><a href="products.html?category=reading">Reading Glasses</a></li>
+                        <li><a href="products.html?category=computer">Computer Glasses</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for updates and promotions.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn-small">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 VisionCraft. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="main.js"></script>
+    <script src="cart.js"></script>
+</body>
+</html>

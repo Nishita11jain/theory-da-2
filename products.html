@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - VisionCraft</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>VisionCraft</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html" class="active">Shop</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <a href="#" id="search-icon"><i class="fas fa-search"></i></a>
+                <a href="cart.html" id="cart-icon"><i class="fas fa-shopping-cart"></i><span id="cart-count">0</span></a>
+            </div>
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+        <div class="search-container">
+            <div class="container">
+                <input type="text" id="search-input" placeholder="Search for products...">
+                <button id="close-search"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Shop All Eyewear</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / <span>Shop</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="products-section">
+        <div class="container">
+            <div class="products-container">
+                <div class="filters">
+                    <h3>Filters</h3>
+                    <div class="filter-group">
+                        <h4>Categories</h4>
+                        <div class="filter-options">
+                            <label>
+                                <input type="checkbox" class="category-filter" value="all" checked> All
+                            </label>
+                            <label>
+                                <input type="checkbox" class="category-filter" value="prescription"> Prescription
+                            </label>
+                            <label>
+                                <input type="checkbox" class="category-filter" value="sunglasses"> Sunglasses
+                            </label>
+                            <label>
+                                <input type="checkbox" class="category-filter" value="reading"> Reading
+                            </label>
+                            <label>
+                                <input type="checkbox" class="category-filter" value="computer"> Computer
+                            </label>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Frame Shape</h4>
+                        <div class="filter-options">
+                            <label>
+                                <input type="checkbox" class="shape-filter" value="all" checked> All
+                            </label>
+                            <label>
+                                <input type="checkbox" class="shape-filter" value="round"> Round
+                            </label>
+                            <label>
+                                <input type="checkbox" class="shape-filter" value="square"> Square
+                            </label>
+                            <label>
+                                <input type="checkbox" class="shape-filter" value="rectangle"> Rectangle
+                            </label>
+                            <label>
+                                <input type="checkbox" class="shape-filter" value="cat-eye"> Cat Eye
+                            </label>
+                            <label>
+                                <input type="checkbox" class="shape-filter" value="aviator"> Aviator
+                            </label>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Price Range</h4>
+                        <div class="price-slider">
+                            <input type="range" id="price-range" min="0" max="300" value="300">
+                            <div class="price-values">
+                                <span>$0</span>
+                                <span id="price-value">$300</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="clear-filters" class="btn-small">Clear Filters</button>
+                </div>
+                <div class="products-list">
+                    <div class="products-header">
+                        <div class="products-count">
+                            <span id="product-count">0</span> Products
+                        </div>
+                        <div class="sort-options">
+                            <label for="sort-by">Sort by:</label>
+                            <select id="sort-by">
+                                <option value="featured">Featured</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="name-asc">Name: A to Z</option>
+                                <option value="name-desc">Name: Z to A</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="products" id="products-grid">
+                        <!-- Products will be loaded dynamically -->
+                    </div>
+                    <div class="no-products" id="no-products">
+                        <p>No products match your criteria. Please try different filters.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>VisionCraft</h3>
+                    <p>Premium eyewear for every style and need. See the world clearly with VisionCraft.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Shop</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="products.html?category=prescription">Prescription Glasses</a></li>
+                        <li><a href="products.html?category=sunglasses">Sunglasses</a></li>
+                        <li><a href="products.html?category=reading">Reading Glasses</a></li>
+                        <li><a href="products.html?category=computer">Computer Glasses</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for updates and promotions.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn-small">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 VisionCraft. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="main.js"></script>
+    <script src="products.js"></script>
+</body>
+</html>
