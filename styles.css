@@ -295,7 +295,7 @@ nav ul li a.active::after {
 
 .product-image img {
     width: 100%;
-    height: 250px;
+    height: auto;
     object-fit: cover;
     transition: transform 0.5s ease;
 }
@@ -811,8 +811,8 @@ footer {
 }
 
 .cart-item-image {
-    width: 100px;
-    height: 100px;
+    width: 1500x;
+    height: 50%;
     object-fit: cover;
     border-radius: 4px;
 }

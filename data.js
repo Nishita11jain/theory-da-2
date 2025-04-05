@@ -5,7 +5,7 @@ export const products = [
         name: "Classic Round",
         category: "prescription",
         shape: "round",
-        price: 129.99,
+        price: 30,
         description: "Timeless round frames that complement any face shape. These lightweight glasses provide all-day comfort and durability.",
         features: [
             "Lightweight acetate frame",
@@ -15,9 +15,7 @@ export const products = [
         ],
         colors: ["Black", "Tortoise", "Crystal"],
         images: [
-            "https://placehold.co/600x400?text=Classic+Round",
-            "https://placehold.co/600x400?text=Classic+Round+Side",
-            "https://placehold.co/600x400?text=Classic+Round+Angle"
+            "classicround.png",
         ],
         rating: 4.8,
         reviews: 124,
@@ -28,7 +26,7 @@ export const products = [
         name: "Modern Square",
         category: "prescription",
         shape: "square",
-        price: 149.99,
+        price: 35,
         description: "Bold square frames with a contemporary twist. Perfect for those looking to make a statement with their eyewear.",
         features: [
             "Premium acetate frame",
@@ -38,9 +36,7 @@ export const products = [
         ],
         colors: ["Black", "Navy", "Burgundy"],
         images: [
-            "https://placehold.co/600x400?text=Modern+Square",
-            "https://placehold.co/600x400?text=Modern+Square+Side",
-            "https://placehold.co/600x400?text=Modern+Square+Angle"
+            "modernsq.png",
         ],
         rating: 4.6,
         reviews: 98,
@@ -51,7 +47,7 @@ export const products = [
         name: "Aviator Sunglasses",
         category: "sunglasses",
         shape: "aviator",
-        price: 179.99,
+        price: 45,
         description: "Classic aviator sunglasses with polarized lenses. Protect your eyes in style with these timeless frames.",
         features: [
             "Metal frame",
@@ -61,9 +57,7 @@ export const products = [
         ],
         colors: ["Gold/Green", "Silver/Blue", "Black/Gray"],
         images: [
-            "https://placehold.co/600x400?text=Aviator+Sunglasses",
-            "https://placehold.co/600x400?text=Aviator+Side",
-            "https://placehold.co/600x400?text=Aviator+Angle"
+            "aviatorsun.png",
         ],
         rating: 4.9,
         reviews: 215,
@@ -74,7 +68,7 @@ export const products = [
         name: "Cat Eye Classic",
         category: "prescription",
         shape: "cat-eye",
-        price: 139.99,
+        price: 35,
         description: "Elegant cat eye frames that add a touch of vintage glamour to any outfit. These frames are both stylish and comfortable.",
         features: [
             "Acetate frame",
@@ -84,9 +78,7 @@ export const products = [
         ],
         colors: ["Black", "Tortoise", "Red"],
         images: [
-            "https://placehold.co/600x400?text=Cat+Eye+Classic",
-            "https://placehold.co/600x400?text=Cat+Eye+Side",
-            "https://placehold.co/600x400?text=Cat+Eye+Angle"
+            "cateyeclassic.png",
         ],
         rating: 4.7,
         reviews: 87,
@@ -97,7 +89,7 @@ export const products = [
         name: "Rectangle Readers",
         category: "reading",
         shape: "rectangle",
-        price: 59.99,
+        price: 45,
         description: "Comfortable reading glasses with rectangle frames. Available in multiple strengths to suit your needs.",
         features: [
             "Lightweight frame",
@@ -107,9 +99,7 @@ export const products = [
         ],
         colors: ["Black", "Brown", "Blue"],
         images: [
-            "https://placehold.co/600x400?text=Rectangle+Readers",
-            "https://placehold.co/600x400?text=Readers+Side",
-            "https://placehold.co/600x400?text=Readers+Angle"
+            "rectread.png",
         ],
         rating: 4.5,
         reviews: 62,
@@ -120,7 +110,7 @@ export const products = [
         name: "Computer Blue Light",
         category: "computer",
         shape: "rectangle",
-        price: 89.99,
+        price: 55,
         description: "Protect your eyes from digital strain with these blue light filtering glasses. Perfect for long hours at the computer.",
         features: [
             "Blue light filtering technology",
@@ -130,9 +120,7 @@ export const products = [
         ],
         colors: ["Black", "Tortoise", "Clear"],
         images: [
-            "https://placehold.co/600x400?text=Computer+Glasses",
-            "https://placehold.co/600x400?text=Computer+Side",
-            "https://placehold.co/600x400?text=Computer+Angle"
+            "cmpbluelight.png",
         ],
         rating: 4.8,
         reviews: 143,
@@ -143,7 +131,7 @@ export const products = [
         name: "Oversized Sunglasses",
         category: "sunglasses",
         shape: "square",
-        price: 159.99,
+        price: 50,
         description: "Make a statement with these oversized square sunglasses. Provides maximum coverage and UV protection.",
         features: [
             "Oversized design",
@@ -153,9 +141,7 @@ export const products = [
         ],
         colors: ["Black", "Tortoise", "White"],
         images: [
-            "https://placehold.co/600x400?text=Oversized+Sunglasses",
-            "https://placehold.co/600x400?text=Oversized+Side",
-            "https://placehold.co/600x400?text=Oversized+Angle"
+            "oversizedsun.png",
         ],
         rating: 4.6,
         reviews: 78,
@@ -166,7 +152,7 @@ export const products = [
         name: "Thin Metal Frame",
         category: "prescription",
         shape: "round",
-        price: 119.99,
+        price: 30,
         description: "Minimalist round metal frames for a subtle, sophisticated look. Lightweight and comfortable for all-day wear.",
         features: [
             "Titanium frame",
@@ -176,9 +162,7 @@ export const products = [
         ],
         colors: ["Gold", "Silver", "Black"],
         images: [
-            "https://placehold.co/600x400?text=Thin+Metal+Frame",
-            "https://placehold.co/600x400?text=Metal+Frame+Side",
-            "https://placehold.co/600x400?text=Metal+Frame+Angle"
+            "Thinmetalframe.jpeg",
         ],
         rating: 4.7,
         reviews: 91,
@@ -199,9 +183,7 @@ export const products = [
         ],
         colors: ["Black", "Brown", "Gray"],
         images: [
-            "https://placehold.co/600x400?text=Bifocal+Readers",
-            "https://placehold.co/600x400?text=Bifocal+Side",
-            "https://placehold.co/600x400?text=Bifocal+Angle"
+            "biofocal.jpeg",
         ],
         rating: 4.4,
         reviews: 56,
@@ -212,7 +194,7 @@ export const products = [
         name: "Gaming Glasses",
         category: "computer",
         shape: "square",
-        price: 99.99,
+        price: 60,
         description: "Designed specifically for gamers, these glasses reduce eye strain during long gaming sessions and improve visual contrast.",
         features: [
             "Blue light filtering",
@@ -222,9 +204,7 @@ export const products = [
         ],
         colors: ["Black", "Red", "Blue"],
         images: [
-            "https://placehold.co/600x400?text=Gaming+Glasses",
-            "https://placehold.co/600x400?text=Gaming+Side",
-            "https://placehold.co/600x400?text=Gaming+Angle"
+            "gaminglass.png",
         ],
         rating: 4.9,
         reviews: 167,
@@ -235,7 +215,7 @@ export const products = [
         name: "Retro Wayfarer",
         category: "sunglasses",
         shape: "square",
-        price: 149.99,
+        price: 50,
         description: "Iconic wayfarer style sunglasses with a modern twist. These versatile frames suit almost any face shape.",
         features: [
             "Acetate frame",
@@ -245,9 +225,7 @@ export const products = [
         ],
         colors: ["Black", "Tortoise", "Navy"],
         images: [
-            "https://placehold.co/600x400?text=Retro+Wayfarer",
-            "https://placehold.co/600x400?text=Wayfarer+Side",
-            "https://placehold.co/600x400?text=Wayfarer+Angle"
+            "retro.png ",
         ],
         rating: 4.8,
         reviews: 132,
@@ -258,7 +236,7 @@ export const products = [
         name: "Rimless Titanium",
         category: "prescription",
         shape: "rectangle",
-        price: 199.99,
+        price: 40,
         description: "Elegant rimless titanium frames for a sophisticated, barely-there look. Extremely lightweight and comfortable.",
         features: [
             "Titanium frame",
@@ -268,9 +246,7 @@ export const products = [
         ],
         colors: ["Silver", "Gold", "Gunmetal"],
         images: [
-            "https://placehold.co/600x400?text=Rimless+Titanium",
-            "https://placehold.co/600x400?text=Rimless+Side",
-            "https://placehold.co/600x400?text=Rimless+Angle"
+            "rimlessTit.png",
         ],
         rating: 4.7,
         reviews: 89,

@@ -1,488 +1,278 @@
-// // DOM Elements
-// const cartItemsContainer = document.getElementById('cart-items');
-// const cartEmpty = document.getElementById('cart-empty');
-// const cartSummary = document.getElementById('cart-summary');
-// const cartSubtotal = document.getElementById('cart-subtotal');
-// const cartShipping = document.getElementById('cart-shipping');
-// const cartTax = document.getElementById('cart-tax');
-// const cartTotal = document.getElementById('cart-total');
-// const checkoutBtn = document.getElementById('checkout-btn');
-
-// // Helper functions for cart management (using localStorage for simplicity)
-// function getCart() {
-//     try {
-//         return JSON.parse(localStorage.getItem('cart')) || [];
-//     } catch (error) {
-//         console.error("Error parsing cart from localStorage:", error);
-//         return [];
-//     }
-// }
-
-// function saveCart(cart) {
-//     try {
-//         localStorage.setItem('cart', JSON.stringify(cart));
-//     } catch (error) {
-//         console.error("Error saving cart to localStorage:", error);
-//     }
-// }
-
-// // Event Listeners
-// document.addEventListener('DOMContentLoaded', function() {
-//     // Load cart
-//     loadCart();
-    
-//     // Checkout button
-//     checkoutBtn.addEventListener('click', function() {
-//         alert('Checkout functionality would be implemented here.');
-//     });
-// });
-
-// // Load cart
-// function loadCart() {
-//     const cart = getCart();
-    
-//     if (cart.length === 0) {
-//         // Show empty cart message
-//         cartEmpty.style.display = 'block';
-//         cartItemsContainer.style.display = 'none';
-//         cartSummary.style.display = 'none';
-//     } else {
-//         // Hide empty cart message
-//         cartEmpty.style.display = 'none';
-//         cartItemsContainer.style.display = 'block';
-//         cartSummary.style.display = 'block';
-        
-//         // Clear cart items
-//         cartItemsContainer.innerHTML = '';
-        
-//         // Render cart items
-//         cart.forEach(item => {
-//             const cartItemElement = createCartItemElement(item);
-//             cartItemsContainer.appendChild(cartItemElement);
-//         });
-        
-//         // Update cart summary
-//         updateCartSummary();
-//     }
-// }
-
-// // Create cart item element
-// function createCartItemElement(item) {
-//     const cartItemElement = document.createElement('div');
-//     cartItemElement.className = 'cart-item';
-    
-//     // Build options string
-//     let optionsText = `Color: ${item.color}`;
-//     if (item.lensType) optionsText += `, Lens: ${item.lensType}`;
-//     if (item.strength) optionsText += `, Strength: +${item.strength}`;
-    
-//     cartItemElement.innerHTML = `
-//         <img src="${item.image}" alt="${item.name}" class="cart-item-image">
-//         <div class="cart-item-details">
-//             <h3>${item.name}</h3>
-//             <p>${optionsText}</p>
-//         </div>
-//         <div class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</div>
-//         <div class="cart-item-quantity">
-//             <button class="cart-quantity-btn decrease" data-key="${item.optionKey}">-</button>
-//             <input type="number" class="cart-quantity-input" value="${item.quantity}" min="1" max="10" data-key="${item.optionKey}">
-//             <button class="cart-quantity-btn increase" data-key="${item.optionKey}">+</button>
-//         </div>
-//         <div class="cart-item-remove" data-key="${item.optionKey}">
-//             <i class="fas fa-trash"></i>
-//         </div>
-//     `;
-    
-//     // Add event listeners
-    
-//     // Decrease quantity
-//     const decreaseBtn = cartItemElement.querySelector('.decrease');
-//     decreaseBtn.addEventListener('click', function() {
-//         const key = this.getAttribute('data-key');
-//         updateCartItemQuantity(key, -1);
-//     });
-    
-//     // Increase quantity
-//     const increaseBtn = cartItemElement.querySelector('.increase');
-//     increaseBtn.addEventListener('click', function() {
-//         const key = this.getAttribute('data-key');
-//         updateCartItemQuantity(key, 1);
-//     });
-    
-//     // Quantity input
-//     const quantityInput = cartItemElement.querySelector('.cart-quantity-input');
-//     quantityInput.addEventListener('change', function() {
-//         const key = this.getAttribute('data-key');
-//         const newQuantity = parseInt(this.value);
-        
-//         if (newQuantity >= 1 && newQuantity <= 10) {
-//             setCartItemQuantity(key, newQuantity);
-//         } else {
-//             // Reset to valid value
-//             const cart = getCart();
-//             const item = cart.find(item => item.optionKey === key);
-//             this.value = item ? item.quantity : 1;
-//         }
-//     });
-    
-//     // Remove item
-//     const removeBtn = cartItemElement.querySelector('.cart-item-remove');
-//     removeBtn.addEventListener('click', function() {
-//         const key = this.getAttribute('data-key');
-//         removeCartItem(key);
-//     });
-    
-//     return cartItemElement;
-// }
-
-// // Update cart item quantity
-// function updateCartItemQuantity(key, change) {
-//     const cart = getCart();
-//     const itemIndex = cart.findIndex(item => item.optionKey === key);
-    
-//     if (itemIndex !== -1) {
-//         const newQuantity = cart[itemIndex].quantity + change;
-        
-//         if (newQuantity >= 1 && newQuantity <= 10) {
-//             cart[itemIndex].quantity = newQuantity;
-//             saveCart(cart);
-//             loadCart();
-//         }
-//     }
-// }
-
-// // Set cart item quantity
-// function setCartItemQuantity(key, quantity) {
-//     const cart = getCart();
-//     const itemIndex = cart.findIndex(item => item.optionKey === key);
-    
-//     if (itemIndex !== -1) {
-//         cart[itemIndex].quantity = quantity;
-//         saveCart(cart);
-//         loadCart();
-//     }
-// }
-
-// // Remove cart item
-// function removeCartItem(key) {
-//     const cart = getCart();
-//     const newCart = cart.filter(item => item.optionKey !== key);
-    
-//     saveCart(newCart);
-//     loadCart();
-// }
-// // add to cart
-
-// export function addToCart(productId) {
-//     const product = productsList.find(p => p.id === productId);
-//     if (!product) {
-//         console.error("Product not found:", productId);
-//         return;
-//     }
-
-//     const cart = getCart();
-
-//     const optionKey = `${product.id}_${product.color}_${product.lensType || ''}_${product.strength || ''}`;
-
-//     const existingItemIndex = cart.findIndex(item => item.optionKey === optionKey);
-
-//     if (existingItemIndex !== -1) {
-//         // Increase quantity if already in cart
-//         if (cart[existingItemIndex].quantity < 10) {
-//             cart[existingItemIndex].quantity += 1;
-//         }
-//     } else {
-//         // Add new item
-//         cart.push({
-//             name: product.name,
-//             image: product.images[0],
-//             price: product.price,
-//             quantity: 1,
-//             color: product.color || "Default",
-//             lensType: product.lensType || "",
-//             strength: product.strength || null,
-//             optionKey: optionKey
-//         });
-//     }
-
-//     saveCart(cart);
-//     loadCart();
-// }
-
-
-// // Update cart summary
-// function updateCartSummary() {
-//     const cart = getCart();
-    
-//     // Calculate subtotal
-//     const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-    
-//     // Calculate shipping (free over $100, otherwise $10)
-//     const shipping = subtotal >= 100 ? 0 : 10;
-    
-//     // Calculate tax (8%)
-//     const tax = subtotal * 0.08;
-    
-//     // Calculate total
-//     const total = subtotal + shipping + tax;
-    
-//     // Update summary
-//     cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
-//     cartShipping.textContent = shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`;
-//     cartTax.textContent = `$${tax.toFixed(2)}`;
-//     cartTotal.textContent = `$${total.toFixed(2)}`;
-// }
-
-
-// Helper functions for cart management (using localStorage for simplicity)
-function getCart() {
+// Import needed functions from main.js (assuming updateCartCount is exported there)
+import { updateCartCount } from './main.js';
+export function getCart() {
     try {
-        return JSON.parse(localStorage.getItem('cart')) || [];
+        // Ensure localStorage is available and accessible
+        if (typeof localStorage !== 'undefined') {
+            return JSON.parse(localStorage.getItem('cart')) || [];
+        } else {
+            console.warn("localStorage is not available.");
+            return [];
+        }
     } catch (error) {
         console.error("Error parsing cart from localStorage:", error);
         return [];
     }
 }
 
-function saveCart(cart) {
+export function saveCart(cart) {
     try {
-        localStorage.setItem('cart', JSON.stringify(cart));
+        // Ensure localStorage is available and accessible
+        if (typeof localStorage !== 'undefined') {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        } else {
+            console.warn("localStorage is not available. Cart not saved.");
+        }
     } catch (error) {
         console.error("Error saving cart to localStorage:", error);
     }
 }
 
-// Event Listeners
+// Constants for calculations (can be defined globally within the module)
+const TAX_RATE = 0.08; // 8% Tax Rate Example
+const SHIPPING_THRESHOLD = 100; // Free shipping over $100
+const SHIPPING_COST = 10.00; // Standard shipping cost
+
+// --- Event Listener for DOM Ready ---
 document.addEventListener('DOMContentLoaded', function() {
-    // DOM Elements
+    // Always try to update the header cart count on any page load
+    // Ensure updateCartCount is robust and handles cases where the element might not exist yet
+    if (typeof updateCartCount === 'function') {
+        updateCartCount();
+    } else {
+        console.warn("updateCartCount function not imported or available.");
+    }
+
+    // --- Cart Page Specific Logic ---
+    // Check if the essential cart page elements exist before trying to use them
     const cartItemsContainer = document.getElementById('cart-items');
     const cartEmpty = document.getElementById('cart-empty');
     const cartSummary = document.getElementById('cart-summary');
-    const cartSubtotal = document.getElementById('cart-subtotal');
-    const cartShipping = document.getElementById('cart-shipping');
-    const cartTax = document.getElementById('cart-tax');
-    const cartTotal = document.getElementById('cart-total');
     const checkoutBtn = document.getElementById('checkout-btn');
+    // Add checks for summary calculation elements too
+    const cartSubtotalElem = document.getElementById('cart-subtotal');
+    const cartShippingElem = document.getElementById('cart-shipping');
+    const cartTaxElem = document.getElementById('cart-tax');
+    const cartTotalElem = document.getElementById('cart-total');
 
-    // Load cart
-    loadCart(cartItemsContainer, cartEmpty, cartSummary, cartSubtotal, cartShipping, cartTax, cartTotal);
+    const USD_TO_INR = 83.00;
 
-    // Checkout button
-    if (checkoutBtn) {
+
+    // Only proceed with cart page setup if *all* critical elements are found
+    if (cartItemsContainer && cartEmpty && cartSummary && checkoutBtn &&
+        cartSubtotalElem && cartShippingElem && cartTaxElem && cartTotalElem) {
+
+        console.log("Initializing cart page elements and listeners."); // For debugging
+
+        // Load the cart items into the display
+        loadCartDisplay(cartItemsContainer, cartEmpty, cartSummary, USD_TO_INR); // Pass USD_TO_INR
+
+        // Add event listener for the checkout button
         checkoutBtn.addEventListener('click', function() {
-            alert('Checkout functionality would be implemented here.');
+            alert('Proceeding to Checkout (Not Implemented)');
         });
-    }
-});
 
-// Load cart
-function loadCart(cartItemsContainer, cartEmpty, cartSummary, cartSubtotal, cartShipping, cartTax, cartTotal) {
+        // Add event listeners for cart actions using event delegation
+        cartItemsContainer.addEventListener('click', function(e) {
+            const target = e.target;
+            const cartItemElement = target.closest('.cart-item');
+            if (!cartItemElement) return;
+
+            const itemKey = cartItemElement.getAttribute('data-key');
+            if (!itemKey) return;
+
+            if (target.classList.contains('decrease')) {
+                updateCartItemQuantity(itemKey, -1, USD_TO_INR); // Pass USD_TO_INR
+            } else if (target.classList.contains('increase')) {
+                updateCartItemQuantity(itemKey, 1, USD_TO_INR); // Pass USD_TO_INR
+            } else if (target.closest('.cart-item-remove')) {
+                removeCartItem(itemKey, USD_TO_INR); // Pass USD_TO_INR
+            }
+        });
+
+        cartItemsContainer.addEventListener('change', function(e) {
+            const target = e.target;
+            if (target.classList.contains('cart-quantity-input')) {
+                const cartItemElement = target.closest('.cart-item');
+                if (!cartItemElement) return;
+
+                const itemKey = cartItemElement.getAttribute('data-key');
+                if (!itemKey) return;
+
+                let newQuantity = parseInt(target.value);
+
+                // Basic validation
+                if (isNaN(newQuantity) || newQuantity < 1) {
+                    newQuantity = 1;
+                } else if (newQuantity > 10) { // Example max quantity
+                    newQuantity = 10;
+                }
+                target.value = newQuantity; // Ensure input reflects validated value
+                setCartItemQuantity(itemKey, newQuantity, USD_TO_INR); // Pass USD_TO_INR
+            }
+        });
+
+    } else {
+        // Optional: Log that we're not on the cart page
+        // console.log("Not on the cart page or essential elements missing. Skipping cart display setup.");
+    }
+
+}); // End of DOMContentLoaded
+
+// --- Cart Display Functions (Only relevant on cart page) ---
+
+// Load/reload the cart items displayed on the cart page
+function loadCartDisplay(container, emptyMsg, summaryBox, exchangeRate) {
     const cart = getCart();
-
-    if (!cartItemsContainer || !cartEmpty || !cartSummary) {
-        console.error("One or more cart elements not found in the DOM.");
-        return;
-    }
+    container.innerHTML = ''; // Clear previous items
 
     if (cart.length === 0) {
-        // Show empty cart message
-        cartEmpty.style.display = 'block';
-        cartItemsContainer.style.display = 'none';
-        cartSummary.style.display = 'none';
+        emptyMsg.style.display = 'block';
+        container.style.display = 'none';
+        summaryBox.style.display = 'none';
     } else {
-        // Hide empty cart message
-        cartEmpty.style.display = 'none';
-        cartItemsContainer.style.display = 'block';
-        cartSummary.style.display = 'block';
+        emptyMsg.style.display = 'none';
+        container.style.display = 'block'; // Or 'grid'/'flex'
+        summaryBox.style.display = 'block'; // Or 'grid'/'flex'
 
-        // Clear cart items
-        cartItemsContainer.innerHTML = '';
-
-        // Render cart items
         cart.forEach(item => {
-            const cartItemElement = createCartItemElement(item, cartItemsContainer, cartEmpty, cartSummary, cartSubtotal, cartShipping, cartTax, cartTotal);
-            cartItemsContainer.appendChild(cartItemElement);
+            const cartItemElement = createCartItemElement(item, exchangeRate); // Pass exchangeRate
+            if (cartItemElement) {
+                container.appendChild(cartItemElement);
+            }
         });
-
-        // Update cart summary
-        updateCartSummary(cartSubtotal, cartShipping, cartTax, cartTotal);
+        updateCartSummaryDisplay(exchangeRate); // Pass exchangeRate
     }
+    // No need to call updateCartCount here, as DOMContentLoaded already did,
+    // and modification functions will call it.
 }
 
-// Create cart item element
-function createCartItemElement(item, cartItemsContainer, cartEmpty, cartSummary, cartSubtotal, cartShipping, cartTax, cartTotal) {
+// Create HTML element for a single cart item
+function createCartItemElement(item, exchangeRate) {
+    // Use optionKey if available, otherwise fallback to id (for items added without options)
+    const itemKey = item.optionKey || item.id?.toString();
+    if (!itemKey) {
+        console.error("Cart item missing key:", item);
+        return null; // Cannot create element without a key
+    }
+
     const cartItemElement = document.createElement('div');
     cartItemElement.className = 'cart-item';
+    cartItemElement.setAttribute('data-key', itemKey);
 
-    // Build options string
-    let optionsText = `Color: ${item.color}`;
+    // Build options string defensively
+    let optionsText = `Color: ${item.color || 'N/A'}`;
     if (item.lensType) optionsText += `, Lens: ${item.lensType}`;
-    if (item.strength) optionsText += `, Strength: +${item.strength}`;
+    if (item.strength) optionsText += `, Strength: ${item.strength}`; // Removed extra '+'
+
+    const itemSubtotalUSD = (item.price && item.quantity) ? (item.price * item.quantity) : 0;
+    const itemSubtotalINR = itemSubtotalUSD * exchangeRate;
 
     cartItemElement.innerHTML = `
-        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+        <img src="${item.image || 'placeholder.png'}" alt="${item.name || 'Product'}" class="cart-item-image">
         <div class="cart-item-details">
-            <h3>${item.name}</h3>
-            <p>${optionsText}</p>
+            <h3 class="cart-item-title">${item.name || 'Unknown Item'}</h3>
+            <p class="cart-item-options">${optionsText}</p>
+            <p class="cart-item-price">₹${item.price ? (item.price * exchangeRate).toFixed(2) : 'N/A'}</p>
         </div>
-        <div class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</div>
         <div class="cart-item-quantity">
-            <button class="cart-quantity-btn decrease" data-key="${item.optionKey}">-</button>
-            <input type="number" class="cart-quantity-input" value="${item.quantity}" min="1" max="10" data-key="${item.optionKey}">
-            <button class="cart-quantity-btn increase" data-key="${item.optionKey}">+</button>
+            <button class="quantity-btn decrease" aria-label="Decrease quantity">-</button>
+            <input type="number" class="cart-quantity-input" value="${item.quantity || 1}" min="1" max="10" aria-label="Quantity">
+            <button class="quantity-btn increase" aria-label="Increase quantity">+</button>
         </div>
-        <div class="cart-item-remove" data-key="${item.optionKey}">
-            <i class="fas fa-trash"></i>
-        </div>
+        <div class="cart-item-total">₹${itemSubtotalINR.toFixed(2)}</div>
+        <button class="cart-item-remove" aria-label="Remove item">
+            <i class="fas fa-trash-alt"></i>
+        </button>
     `;
-
-    // Add event listeners
-
-    // Decrease quantity
-    const decreaseBtn = cartItemElement.querySelector('.decrease');
-    decreaseBtn.addEventListener('click', function() {
-        const key = this.getAttribute('data-key');
-        updateCartItemQuantity(key, -1, cartItemsContainer, cartEmpty, cartSummary, cartSubtotal, cartShipping, cartTax, cartTotal);
-    });
-
-    // Increase quantity
-    const increaseBtn = cartItemElement.querySelector('.increase');
-    increaseBtn.addEventListener('click', function() {
-        const key = this.getAttribute('data-key');
-        updateCartItemQuantity(key, 1, cartItemsContainer, cartEmpty, cartSummary, cartSubtotal, cartShipping, cartTax, cartTotal);
-    });
-
-    // Quantity input
-    const quantityInput = cartItemElement.querySelector('.cart-quantity-input');
-    quantityInput.addEventListener('change', function() {
-        const key = this.getAttribute('data-key');
-        const newQuantity = parseInt(this.value);
-
-        if (newQuantity >= 1 && newQuantity <= 10) {
-            setCartItemQuantity(key, newQuantity, cartItemsContainer, cartEmpty, cartSummary, cartSubtotal, cartShipping, cartTax, cartTotal);
-        } else {
-            // Reset to valid value
-            const cart = getCart();
-            const item = cart.find(item => item.optionKey === key);
-            this.value = item ? item.quantity : 1;
-        }
-    });
-
-    // Remove item
-    const removeBtn = cartItemElement.querySelector('.cart-item-remove');
-    removeBtn.addEventListener('click', function() {
-        const key = this.getAttribute('data-key');
-        removeCartItem(key, cartItemsContainer, cartEmpty, cartSummary, cartSubtotal, cartShipping, cartTax, cartTotal);
-    });
-
     return cartItemElement;
 }
 
-// Update cart item quantity
-function updateCartItemQuantity(key, change, cartItemsContainer, cartEmpty, cartSummary, cartSubtotal, cartShipping, cartTax, cartTotal) {
+// Update the cart summary display on the cart page
+function updateCartSummaryDisplay(exchangeRate) {
+    // Get summary elements (assuming this is only called if they exist)
+    const cartSubtotalElem = document.getElementById('cart-subtotal');
+    const cartShippingElem = document.getElementById('cart-shipping');
+    const cartTaxElem = document.getElementById('cart-tax');
+    const cartTotalElem = document.getElementById('cart-total');
+
+    // Defensive check, although the caller should ensure these exist
+    if (!cartSubtotalElem || !cartShippingElem || !cartTaxElem || !cartTotalElem) {
+        console.error("updateCartSummaryDisplay: Could not find summary DOM elements.");
+        return;
+    }
+
     const cart = getCart();
-    const itemIndex = cart.findIndex(item => item.optionKey === key);
+    const subtotalUSD = cart.reduce((total, item) => total + ((item.price || 0) * (item.quantity || 0)), 0);
+    const subtotalINR = subtotalUSD * exchangeRate;
+    const shippingUSD = subtotalUSD >= SHIPPING_THRESHOLD || subtotalUSD === 0 ? 0 : SHIPPING_COST;
+    const shippingINR = shippingUSD * exchangeRate;
+    const taxINR = subtotalINR * TAX_RATE;
+    const totalINR = subtotalINR + shippingINR + taxINR;
 
-    if (itemIndex !== -1) {
-        const newQuantity = cart[itemIndex].quantity + change;
+    cartSubtotalElem.textContent = `₹${subtotalINR.toFixed(2)}`;
+    cartShippingElem.textContent = shippingUSD === 0 ? (subtotalUSD > 0 ? 'Free' : '₹0.00') : `₹${shippingINR.toFixed(2)}`;
+    cartTaxElem.textContent = `₹${taxINR.toFixed(2)}`;
+    cartTotalElem.textContent = `₹${totalINR.toFixed(2)}`;
+}
 
-        if (newQuantity >= 1 && newQuantity <= 10) {
+
+// --- Cart Data Modification Functions (Can be called from any page) ---
+
+// Update quantity by increment (delta = 1 or -1)
+function updateCartItemQuantity(itemKey, delta, exchangeRate) {
+    let cart = getCart();
+    const itemIndex = cart.findIndex(item => (item.optionKey || item.id?.toString()) === itemKey);
+
+    if (itemIndex > -1) {
+        const newQuantity = (cart[itemIndex].quantity || 0) + delta;
+        if (newQuantity >= 1 && newQuantity <= 10) { // Enforce min/max
             cart[itemIndex].quantity = newQuantity;
             saveCart(cart);
-            loadCart(cartItemsContainer, cartEmpty, cartSummary, cartSubtotal, cartShipping, cartTax, cartTotal);
+            updateCartCount(); // Update header immediately
+            // Reload display *only if* we are on the cart page
+            const container = document.getElementById('cart-items');
+            if (container) {
+                loadCartDisplay(container, document.getElementById('cart-empty'), document.getElementById('cart-summary'), exchangeRate); // Pass exchangeRate
+            }
+        } else if (newQuantity < 1) {
+             // Optionally remove if quantity goes below 1
+             removeCartItem(itemKey, exchangeRate); // Pass exchangeRate
         }
     }
 }
 
-// Set cart item quantity
-function setCartItemQuantity(key, quantity, cartItemsContainer, cartEmpty, cartSummary, cartSubtotal, cartShipping, cartTax, cartTotal) {
-    const cart = getCart();
-    const itemIndex = cart.findIndex(item => item.optionKey === key);
+// Set specific quantity from input
+function setCartItemQuantity(itemKey, newQuantity, exchangeRate) {
+    let cart = getCart();
+    const itemIndex = cart.findIndex(item => (item.optionKey || item.id?.toString()) === itemKey);
 
-    if (itemIndex !== -1) {
-        cart[itemIndex].quantity = quantity;
+    if (itemIndex > -1) {
+        // Ensure quantity is within valid range
+        const validatedQuantity = Math.max(1, Math.min(10, newQuantity)); // Clamp between 1 and 10
+        cart[itemIndex].quantity = validatedQuantity;
         saveCart(cart);
-        loadCart(cartItemsContainer, cartEmpty, cartSummary, cartSubtotal, cartShipping, cartTax, cartTotal);
-    }
-}
-
-// Remove cart item
-function removeCartItem(key, cartItemsContainer, cartEmpty, cartSummary, cartSubtotal, cartShipping, cartTax, cartTotal) {
-    const cart = getCart();
-    const newCart = cart.filter(item => item.optionKey !== key);
-
-    saveCart(newCart);
-    loadCart(cartItemsContainer, cartEmpty, cartSummary, cartSubtotal, cartShipping, cartTax, cartTotal);
-}
-// add to cart
-
-export function addToCart(productId) {
-    // Assuming productsList is available in the global scope or imported
-    if (typeof productsList === 'undefined') {
-        console.error("productsList is not defined. Make sure your product data is available.");
-        return;
-    }
-    const product = productsList.find(p => p.id === productId);
-    if (!product) {
-        console.error("Product not found:", productId);
-        return;
-    }
-
-    const cart = getCart();
-
-    const optionKey = `${product.id}_${product.color}_${product.lensType || ''}_${product.strength || ''}`;
-
-    const existingItemIndex = cart.findIndex(item => item.optionKey === optionKey);
-
-    if (existingItemIndex !== -1) {
-        // Increase quantity if already in cart
-        if (cart[existingItemIndex].quantity < 10) {
-            cart[existingItemIndex].quantity += 1;
+        updateCartCount(); // Update header immediately
+        // Reload display *only if* we are on the cart page
+        const container = document.getElementById('cart-items');
+        if (container) {
+            loadCartDisplay(container, document.getElementById('cart-empty'), document.getElementById('cart-summary'), exchangeRate); // Pass exchangeRate
         }
-    } else {
-        // Add new item
-        cart.push({
-            name: product.name,
-            image: product.images[0],
-            price: product.price,
-            quantity: 1,
-            color: product.color || "Default",
-            lensType: product.lensType || "",
-            strength: product.strength || null,
-            optionKey: optionKey
-        });
     }
-
-    saveCart(cart);
-    // We can't directly call loadCart here without the DOM elements.
-    // Consider reloading the page or triggering an event that the cart page listens to.
-    console.log("Item added to cart. Navigate to the cart page to see updates.");
 }
 
 
-// Update cart summary
-function updateCartSummary(cartSubtotal, cartShipping, cartTax, cartTotal) {
-    const cart = getCart();
-
-    if (!cartSubtotal || !cartShipping || !cartTax || !cartTotal) {
-        console.error("One or more cart summary elements not found in the DOM.");
-        return;
+// Remove item from cart
+function removeCartItem(itemKey, exchangeRate) {
+    let cart = getCart();
+    const updatedCart = cart.filter(item => (item.optionKey || item.id?.toString()) !== itemKey);
+    if (cart.length !== updatedCart.length) { // Check if something was actually removed
+        saveCart(updatedCart);
+        updateCartCount(); // Update header immediately
+        // Reload display *only if* we are on the cart page
+        const container = document.getElementById('cart-items');
+        if (container) {
+            loadCartDisplay(container, document.getElementById('cart-empty'), document.getElementById('cart-summary'), exchangeRate); // Pass exchangeRate
+        }
     }
-
-    // Calculate subtotal
-    const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-
-    // Calculate shipping (free over $100, otherwise $10)
-    const shipping = subtotal >= 100 ? 0 : 10;
-
-    // Calculate tax (8%)
-    const tax = subtotal * 0.08;
-
-    // Calculate total
-    const total = subtotal + shipping + tax;
-
-    cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
-    cartShipping.textContent = shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`;
-    cartTax.textContent = `$${tax.toFixed(2)}`;
-    cartTotal.textContent = `$${total.toFixed(2)}`;
 }
